@@ -1,0 +1,120 @@
+body {
+  /* 定义 3D 元素距视图的距离 */
+  perspective: 2000;
+  overflow: hidden;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 150px;
+  /* 表示所有子元素在3D空间中呈现。 */
+  transform-style: preserve-3d;
+  transform: rotate3d(1, 0, 1, 60deg);
+  /* 5秒完成动画，速度不变，无限次数 */
+  animation: run 5s linear infinite;
+}
+
+
+/* 动画过程 */
+
+@keyframes run {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(90deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(270deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.box div {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  border: 1px solid;
+  text-align: center;
+  line-height: 300px;
+  opacity: 0.9;
+  transition: all 0.8s;
+}
+
+div img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.8s;
+}
+
+
+/* 六个div的位置和朝向 */
+
+.top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.bottom {
+  transform: rotateX(90deg) translateZ(-150px);
+}
+
+.left {
+  transform: rotateY(90deg) translateZ(-150px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.front {
+  transform: translateZ(150px);
+}
+
+.back {
+  transform: translateZ(-150px);
+}
+
+
+/* 鼠标移入改变留个div的位置 */
+
+.box:hover .top {
+  transform: rotateX(90deg) translateZ(250px);
+  border-radius: 50%;
+}
+
+.box:hover .bottom {
+  transform: rotateX(90deg) translateZ(-250px);
+  border-radius: 50%;
+}
+
+.box:hover .left {
+  transform: rotateY(90deg) translateZ(-250px);
+  border-radius: 50%;
+}
+
+.box:hover .right {
+  transform: rotateY(90deg) translateZ(250px);
+  border-radius: 50%;
+}
+
+.box:hover .front {
+  transform: translateZ(250px);
+  border-radius: 50%;
+}
+
+.box:hover .back {
+  transform: translateZ(-250px);
+  border-radius: 50%;
+}
+
+.box:hover img {
+  border-radius: 50%;
+}
